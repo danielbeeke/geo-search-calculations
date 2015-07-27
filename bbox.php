@@ -32,18 +32,34 @@ function getOverlapAoverB($a_key, $b_key) {
 
   // A is fully contained by B
   if ($a['south_west_lat'] > $b['south_west_lat'] && $a['north_east_lat'] < $b['north_east_lat']) {
-    echo $a_key . ' is fully contained by ' . $b_key . ': '. $overlap . "\n";
+    echo $a_key . ' is horizontaly fully contained by ' . $b_key . "\n";
   }
 
   // A fully contains B
   elseif ($a['south_west_lat'] < $b['south_west_lat'] && $a['north_east_lat'] > $b['north_east_lat']) {
-    echo $a_key . ' fully contains ' . $b_key . ': '. $overlap . "\n";
+    echo $a_key . ' horizontaly fully contains ' . $b_key . "\n";
   }
 
   // A partly contains B
   elseif ($a['south_west_lat'] > $b['south_west_lat'] && $a['south_west_lat'] < $b['north_east_lat'] ||
     $a['north_east_lat'] > $b['south_west_lat'] && $a['south_west_lat'] < $b['north_east_lat']) {
-    echo $a_key . ' partly contains ' . $b_key . ': '. $overlap . "\n";
+    echo $a_key . ' horizontaly partly contains ' . $b_key . "\n";
+  }
+
+  // A is fully contained by B
+  if ($a['south_west_lng'] > $b['south_west_lng'] && $a['north_east_lng'] < $b['north_east_lng']) {
+    echo $a_key . ' is vertically fully contained by ' . $b_key . "\n";
+  }
+
+  // A fully contains B
+  elseif ($a['south_west_lng'] < $b['south_west_lng'] && $a['north_east_lng'] > $b['north_east_lng']) {
+    echo $a_key . ' vertically fully contains ' . $b_key . "\n";
+  }
+
+  // A partly contains B
+  elseif ($a['south_west_lng'] > $b['south_west_lng'] && $a['south_west_lng'] < $b['north_east_lng'] ||
+    $a['north_east_lng'] > $b['south_west_lng'] && $a['south_west_lng'] < $b['north_east_lng']) {
+    echo $a_key . ' vertically partly contains ' . $b_key . "\n";
   }
 
   return $overlap;
